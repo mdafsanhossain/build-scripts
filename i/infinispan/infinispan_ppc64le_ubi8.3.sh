@@ -21,14 +21,16 @@ BUILD_VERSION=12.1.3.Final
 
 #Install dependencies
 yum -y update
-yum -y install wget git
-yum install -y openssl-devel.ppc64le
-yum install -y java-1.8.0-openjdk-devel.ppc64le 
+yum -y install wget git lsof
+yum install -y openssl-devel.ppc64le 
 yum install -y maven
 
-export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
+#Install java
+yum install -y java-11-openjdk java-11-openjdk-devel
+whichJavaString=$(ls /usr/lib/jvm/ | grep -P '^(?=.*java-11-openjdk-11)(?=.*ppc64le)')
+export JAVA_HOME=/usr/lib/jvm/$whichJavaString
 
 #Build Infinispan
 git clone https://github.com/infinispan/infinispan
 cd infinispan && git checkout $BUILD_VERSION
-mvn -s maven-settings.xml clean install -DskipTests=true
+mvn -s maven-settings.xml clean install -Dmaven.test.failure.ignore=true
