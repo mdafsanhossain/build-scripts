@@ -10,7 +10,7 @@
 #
 # Disclaimer: This script has been tested in root mode on given
 # ==========  platform using the mentioned version of the package.
-#             It may not work as expected with newer versions of the
+#             It may not work as expected with newer versions of thew
 #             package and/or distribution. In such case, please
 #             contact "Maintainer" of this script.
 #
@@ -21,14 +21,14 @@ set -ex
 
 # Install dependencies
 dnf -y --disableplugin=subscription-manager install \
-    http://mirror.centos.org/centos/8/BaseOS/ppc64le/os/Packages/centos-gpg-keys-8-2.el8.noarch.rpm \
-    http://mirror.centos.org/centos/8/BaseOS/ppc64le/os/Packages/centos-linux-repos-8-2.el8.noarch.rpm \
+    https://rpmfind.net/linux/centos/8.5.2111/BaseOS/ppc64le/os/Packages/centos-gpg-keys-8-3.el8.noarch.rpm \
+    https://rpmfind.net/linux/centos/8.5.2111/BaseOS/ppc64le/os/Packages/centos-linux-repos-8-3.el8.noarch.rpm \
     https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 
 yum install -y git vim make cmake3 python2 cups-devel pkgconfig nss-devel openssl-devel glib2-devel pango-devel dbus-devel atk-devel at-spi2-atk-devel gtk3-devel krb5-devel pulseaudio-libs-devel libXScrnSaver-devel epel-release subversion curl alsa-lib-devel pciutils-devel mesa-libGLw bison patch bzip2 libuuid-devel mesa-libgbm libsecret-devel python38 python2-psutil python38-psutil java-1.*.0-openjdk-devel libXtst-devel libatomic gcc-c++ expat-devel zlib-devel perl-ExtUtils-MakeMaker wget diffutils libdrm-devel
 
 dnf install -y http://mirror.centos.org/centos/8/PowerTools/ppc64le/os/Packages/gperf-3.1-5.el8.ppc64le.rpm
-dnf install -y http://mirror.centos.org/centos/8/PowerTools/ppc64le/os/Packages/mesa-libgbm-devel-20.3.3-2.el8.ppc64le.rpm
+dnf install -y https://rpmfind.net/linux/centos/8.5.2111/PowerTools/ppc64le/os/Packages/mesa-libgbm-devel-21.1.5-1.el8.ppc64le.rpm
 dnf install -y http://mirror.centos.org/centos/8/PowerTools/ppc64le/os/Packages/re2c-0.14.3-2.el8.ppc64le.rpm
 dnf install -y http://mirror.centos.org/centos/8/PowerTools/ppc64le/os/Packages/ninja-build-1.8.2-1.el8.ppc64le.rpm
 
@@ -167,4 +167,3 @@ ninja -C out/Default chromedriver
 cd out/Default/
 ./chrome --version
 ./chromedriver --version
-
